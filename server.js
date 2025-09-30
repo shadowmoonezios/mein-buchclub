@@ -10,7 +10,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB Verbindung
-mongoose.connect('mongodb://localhost/mein-buchclub', { useNewUrlParser: true, useUnifiedTopology: true })
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/mein-buchclub';
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB verbunden'))
   .catch(err => console.error(err));
 
